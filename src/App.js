@@ -1,11 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
-import { MediapipeScreen } from './Components/MediapipeScreen';
+
+import './styles/App.css';
+
+
 
 
 function App() {
   return <div className="App">
-    <MediapipeScreen></MediapipeScreen>
+    
     </div>;
 }
 

@@ -17,8 +17,6 @@ export function matchPasswords(password, confirmPassword) {
 }
 
 
-
-
 export function saveToken(token) {
     localStorage.setItem(REACT_APP_FIREBASE_TOKEN_KEY , token);
 }

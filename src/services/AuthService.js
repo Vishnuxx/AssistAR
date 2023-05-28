@@ -8,21 +8,7 @@ import {
 } from "../constants/Envs";
 
 function AuthService(fauth) {
-  //for creating user profile
-  const createProfile = async (token, { username, email }) => {
-    const data = { username, email };
-    return await axios.post(
-      REACT_APP_SERVER__ENDPOINT + REACT_APP_SERVER_CREATE_PROFILE_ENDPOINT,
-      data,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-  };
-
+  
   this.signup = async (username, email, password, confirmpassword) => {
     try {
       const usercredential = await createUserWithEmailAndPassword(

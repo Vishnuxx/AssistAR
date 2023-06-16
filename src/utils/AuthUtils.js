@@ -13,13 +13,18 @@ export function validateSignupInput(
   password,
   confirmpassword
 ) {
-
   validateUsername(username);
   validateEmail(email);
   validatePassword(password);
   validateConfirmPassword(confirmpassword);
   matchPasswords(password, confirmpassword);
 
+  return true;
+}
+
+export function validateLoginInput(email, password) {
+  validateEmail(email);
+  validatePassword(password);
   return true;
 }
 

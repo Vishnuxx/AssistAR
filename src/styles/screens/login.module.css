@@ -44,7 +44,7 @@ form.txt_field {
   height: 40px;
   font-size: 16px;
 }
-input[type="submit"] {
+.submitbtn{
   width: 92%;
   height: 50px;
   border: 1px solid;
@@ -56,7 +56,7 @@ input[type="submit"] {
   cursor: pointer;
   outline: none;
 }
-input[type="submit"]:hover {
+.submitbtn:hover {
   border-color: #2691d9;
   transition: 0.5s;
 }

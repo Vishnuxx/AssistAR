@@ -1,50 +1,79 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { fauth } from "../firebase_config";
-import { matchPasswords, saveToken } from "../utils/AuthUtils";
+import {
+  matchPasswords,
+  saveToken,
+  validateLoginInput,
+  validateSignupInput,
+} from "../utils/AuthUtils";
 import axios from "axios";
 import {
   REACT_APP_SERVER_CREATE_PROFILE_ENDPOINT,
   REACT_APP_SERVER__ENDPOINT,
 } from "../constants/Envs";
+import { savetUid } from "../utils/StorageUtils";
 
 function AuthService(fauth) {
-  
   this.signup = async (username, email, password, confirmpassword) => {
-    try {
-      const usercredential = await createUserWithEmailAndPassword(
-        fauth,
-        email,
-        password
-      );
-      const user = usercredential.user;
-      saveToken(user.getIdToken());
-      const response = await createProfile(user.getIdToken(), {
-        username : username , 
-        email : email
-      });
-    } catch (error) {
-      throw new Error(error.message);
-    }
+    //throws exception for invalid inputs
+    const match = validateSignupInput(
+      username,
+      email,
+      password,
+      confirmpassword
+    );
+    console.log("validated");
+    const resposnse = await axios({
+      method: "post",
+      url: REACT_APP_SERVER__ENDPOINT + "/signup",
+      data: {
+        username: username,
+        email: email,
+        password: password,
+      },
+    });
+    console.log("signedup");
+    return resposnse;
   };
 
   this.login = async (email, password) => {
-    try {
-      const userCredential = await fauth.signInWithEmailAndPassword(
-        email,
-        password
-      );
-      return userCredential.user;
-    } catch (error) {
-      throw new Error(error.message);
-    }
-  };
+    //throws exception for invalid inputs
+    const match = validateLoginInput(email, password);
+    console.log("validated");
 
-  this.forgotPassword = async (email) => {
-    try {
-      await fauth.sendPasswordResetEmail(email);
-    } catch (error) {
-      throw new Error(error.message);
-    }
+    const userCredential = await signInWithEmailAndPassword(
+      fauth,
+      email,
+      password
+    );
+    console.log("logined");
+
+    savetUid(userCredential.user.uid);
+
+    const token = await userCredential.user.getIdToken();
+    saveToken(token);
+    console.log("token fetched", token);
+
+    const profile = await axios({
+      method: "get",
+      url: REACT_APP_SERVER__ENDPOINT + "/userprofile",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params: {
+        uid: userCredential.user.uid,
+      },
+    });
+
+    console.log("fetched profile");
+
+    return {
+      user: userCredential.user,
+      profile: profile,
+    };
   };
 
   //listens for token update
@@ -52,7 +81,7 @@ function AuthService(fauth) {
     return fauth.onIdTokenChanged(async (user) => {
       if (user) {
         const token = await user.getIdToken();
-        localStorage.setItem("token", token);
+        saveToken(token);
         onUpdate(token);
       } else {
         localStorage.removeItem("token");
@@ -62,4 +91,4 @@ function AuthService(fauth) {
   };
 }
 
-export const Authenticator = new AuthService(fauth);
+export const auth_service = new AuthService(fauth);

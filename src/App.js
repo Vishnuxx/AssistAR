@@ -7,6 +7,7 @@ import ForgotPasswordScreen from "./Screens/ForgotPasswordScreen";
 import Dashboard from "./Screens/DashboardScreen";
 import JoinRoomScreen from "./Screens/JoinRoomScreen";
 import CreateRoomScreen from "./Screens/CreateRoomScreen";
+import Room from "./Screens/Room";
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
           <Route
             path={APP_ROUTES.createroom}
             element={<CreateRoomScreen />}
+          ></Route>
+          <Route
+            path={APP_ROUTES.room}
+            element={<Room />}
           ></Route>
           <Route
             path={APP_ROUTES.forgot}

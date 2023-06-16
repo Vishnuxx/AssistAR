@@ -5,7 +5,8 @@ import LoginScreen from "./Screens/LoginScreen";
 import SignUpScreen from "./Screens/SignUpScreen";
 import ForgotPasswordScreen from "./Screens/ForgotPasswordScreen";
 import Dashboard from "./Screens/DashboardScreen";
-import JoinScreen from "./Screens/JoinScreen";
+import JoinRoomScreen from "./Screens/JoinRoomScreen";
+import CreateRoomScreen from "./Screens/CreateRoomScreen";
 
 function App() {
   return (
@@ -16,7 +17,14 @@ function App() {
           <Route path={APP_ROUTES.login} element={<LoginScreen />}></Route>
           <Route path={APP_ROUTES.signup} element={<SignUpScreen />}></Route>
           <Route path={APP_ROUTES.dashboard} element={<Dashboard />}></Route>
-          <Route path={APP_ROUTES.joinroom} element={<JoinScreen />}></Route>
+          <Route
+            path={APP_ROUTES.joinroom}
+            element={<JoinRoomScreen />}
+          ></Route>
+          <Route
+            path={APP_ROUTES.createroom}
+            element={<CreateRoomScreen />}
+          ></Route>
           <Route
             path={APP_ROUTES.forgot}
             element={<ForgotPasswordScreen />}

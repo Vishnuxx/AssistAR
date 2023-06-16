@@ -1,28 +1,24 @@
 import { Link } from "react-router-dom";
-import style from "../styles/screens/login.module.css"
-import bgimage from "../assets/img2.png"
+import style from "../styles/screens/login.module.css";
+import bgimage from "../assets/img2.png";
 import { useState } from "react";
-import { Authenticator } from "../services/AuthService";
+import { auth_service } from "../services/AuthService";
 
 function LoginScreen() {
-  
-   const [email, setemail] = useState("");
-   const [password, setpassword] = useState("");
-   const [errormessage, seterrormessage] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const [errormessage, seterrormessage] = useState("");
 
-   const handleLogin = async () => {
-     try {
-      console.log(email , password)
-       const response = await Authenticator.login(
-         email,
-         password,
-       );
-       seterrormessage("");
-       console.log(response);
-     } catch (error) {
-       seterrormessage(error.toString());
-     }
-   };
+  const handleLogin = async () => {
+    try {
+      console.log(email, password);
+      const response = await auth_service.login(email, password);      
+      seterrormessage("");
+      console.log(response);
+    } catch (error) {
+      seterrormessage(error.toString());
+    }
+  };
 
   return (
     <>

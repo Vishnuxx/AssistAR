@@ -7,5 +7,6 @@ export const APP_ROUTES = {
   dashboard: "/dashboard",
   preview: "/preview",
   joinroom : "/join",
-  createroom : "/create"
+  createroom : "/create",
+  room : "/room"
 };

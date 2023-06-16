@@ -4,6 +4,7 @@ import { APP_ROUTES } from "./constants/Routes";
 import LoginScreen from "./Screens/LoginScreen";
 import SignUpScreen from "./Screens/SignUpScreen";
 import ForgotPasswordScreen from "./Screens/ForgotPasswordScreen";
+import Dashboard from "./Screens/DashboardScreen";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<LoginScreen />}></Route>
           <Route path={APP_ROUTES.login} element={<LoginScreen />}></Route>
           <Route path={APP_ROUTES.signup} element={<SignUpScreen />}></Route>
+          <Route path={APP_ROUTES.dashboard} element={<Dashboard />}></Route>
           <Route
             path={APP_ROUTES.forgot}
             element={<ForgotPasswordScreen />}

@@ -10,10 +10,13 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/"></Route>
+          <Route path="/" element={<LoginScreen />}></Route>
           <Route path={APP_ROUTES.login} element={<LoginScreen />}></Route>
           <Route path={APP_ROUTES.signup} element={<SignUpScreen />}></Route>
-          <Route path={APP_ROUTES.forgot} element={<ForgotPasswordScreen />}></Route>
+          <Route
+            path={APP_ROUTES.forgot}
+            element={<ForgotPasswordScreen />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     </div>

@@ -1,0 +1,53 @@
+.main {
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 2.3rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+
+.label {
+    font-size: 1.2rem;
+}
+
+.input {
+    padding: 15px;
+    box-sizing: border-box;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 40px ;
+}
+
+
+.joinbtn {
+    padding: 10px;
+    min-width: 200px;
+   
+  border: none;
+  color: white;
+  padding: 10px;
+  font-weight: 600;
+  border-radius: 100px;
+  font-size: large;
+   background-image: linear-gradient(90deg, #2514df, #ae01eb);
+}
+
+.joinbtn:active {
+  outline: 3px solid #000000;
+}

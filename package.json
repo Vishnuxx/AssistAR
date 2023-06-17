@@ -10,9 +10,12 @@
     "@mediapipe/drawing_utils": "^0.3.1675466124",
     "@mediapipe/hands": "^0.4.1675469240",
     "@mediapipe/selfie_segmentation": "^0.1.1675465747",
+    "@react-three/drei": "^9.75.0",
+    "@react-three/fiber": "^8.13.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@zappar/zappar-react-three-fiber": "^2.4.0",
     "axios": "^1.4.0",
     "dotenv": "^16.0.3",
     "firebase": "^9.22.1",
@@ -21,13 +24,14 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
+    "three": "^0.153.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "export HTTPS=true&&SSL_CRT_FILE=./certificate.crt&&SSL_KEY_FILE=./private.key react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": [
@@ -46,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-app-rewired": "^2.2.1"
   }
 }
